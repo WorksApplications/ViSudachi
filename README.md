@@ -16,3 +16,5 @@ Launch the process and browse to `http://localhost:8080` in your web browser.
 ```Bash
 java -jar build/libs/visudachi-0.0.1-SNAPSHOT.jar
 ```
+
+![screenshot](https://github.com/WorksApplications/ViSudachi/blob/images/screenshot.png)

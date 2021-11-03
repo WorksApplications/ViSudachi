@@ -24,3 +24,7 @@ java -jar build/libs/visudachi-0.0.1-SNAPSHOT.jar
 
 - Specify the location of dictionaries
 - Specify system dictionary type and user dictionaries
+
+## Thanks
+
+This tool was inspired by ViJUMAN, ViCha and VisualMorphs.

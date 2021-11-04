@@ -2,11 +2,19 @@ package com.worksap.nlp.visudachi;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
 
 import com.worksap.nlp.sudachi.Dictionary;
 import com.worksap.nlp.sudachi.DictionaryFactory;
 import com.worksap.nlp.sudachi.Tokenizer;
 
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +25,27 @@ import lombok.Data;
 
 @RestController
 public class SudachiController {
+    @Resource
+    private ApplicationArguments arguments;
+
     private Dictionary dictionary;
-    
-    public SudachiController() throws IOException {
-        dictionary = new DictionaryFactory().create();
+
+    @PostConstruct
+    public void buildDictionary() throws IOException {
+        List<String> systemDict = arguments.getOptionValues("system-dict");
+        List<String> userDict = arguments.getOptionValues("user-dict");
+
+        JsonObjectBuilder config = Json.createObjectBuilder();
+        if (systemDict != null && !systemDict.isEmpty()) {
+            config.add("systemDict", systemDict.get(systemDict.size() - 1));
+        }
+        if (userDict != null && !userDict.isEmpty()) {
+            JsonArrayBuilder builder = Json.createArrayBuilder();
+            userDict.forEach(builder::add);
+            config.add("userDict", builder);
+        }
+
+        dictionary = new DictionaryFactory().create(null, config.build().toString(), true);
     }
 
     @Data

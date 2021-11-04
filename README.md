@@ -7,8 +7,6 @@ A tool for visualizing the internal structures of morphological analyzer Sudachi
 ./gradlew bootJar
 ```
 
-(Need Sudachi 0.5.3-SNAPSHOT or later)
-
 ## Usage
 
 1. Copy `system_core.dic` to the current directory.

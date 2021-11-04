@@ -83,6 +83,7 @@ async function setLattice(text, setMorpheme) {
 }
 
 function App() {
+  const [inputText, setInputText] = useState('');
   const [morphemes, setMorpheme] = useState([]);
   
   const [bestCost, bestPath, bestEdges] = viterbi(morphemes);
@@ -124,12 +125,18 @@ function App() {
   return (
     <div className="App">
       <div className="pannel">
-        <label for="input">Input: </label>
-        <input
-          id="input"
-          type="text"
-          onChange={e => setLattice(e.target.value, setMorpheme)}
-        />
+        <form onSubmit={e => {
+          setLattice(inputText, setMorpheme);
+          e.preventDefault();
+        }}>
+          <label for="input">Input: </label>
+          <input
+            id="input"
+            type="text"
+            value={inputText}
+            onChange={e => setInputText(e.target.value)}
+          />
+        </form>
         <div className="totalCost">
           <p>Total Cost: {totalCost} {costDiff}</p>
         </div>

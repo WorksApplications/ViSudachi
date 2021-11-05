@@ -4,7 +4,6 @@ A tool for visualizing the internal structures of morphological analyzer Sudachi
 ## Build
 
 ```
-./gradlew build
 ./gradlew bootJar
 ```
 
@@ -14,7 +13,7 @@ A tool for visualizing the internal structures of morphological analyzer Sudachi
 2. Launch the process and browse to `http://localhost:8080` in your web browser.
 
 ```
-java -jar build/libs/visudachi-0.0.1-SNAPSHOT.jar
+java -jar backend/build/libs/visudachi-0.0.1-SNAPSHOT.jar
 ```
 
 Or, if you want to specify dictionaries, you can do so as follows.

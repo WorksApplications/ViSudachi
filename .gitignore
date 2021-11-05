@@ -41,7 +41,7 @@ frontend/coverage
 
 # production
 frontend/build
-src/main/resources/public
+backend/src/main/resources/static
 
 # misc
 .DS_Store

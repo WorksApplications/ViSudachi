@@ -3,9 +3,9 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id "io.freefair.lombok" version "6.2.0"
 	id 'java'
-	id "com.github.node-gradle.node" version "3.0.1"
 }
 
+archivesBaseName = rootProject.name
 group = 'com.worksap.nlp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -20,14 +20,13 @@ dependencies {
   	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-task buildReact(type: YarnTask) {
-	execOverrides {
-		it.workingDir = './frontend'
-	}
-	args = ['build']
+clean.delete fileTree('src/main/resources/static').include('**/*')
+task copyFrontend(type: Copy, dependsOn: ':frontend:build') {
+	from project(':frontend').file('build')
+	into 'src/main/resources/static'
+	exclude 'favicon.ico:Zone.Identifier'
 }
-
-build.dependsOn buildReact
+processResources.dependsOn copyFrontend
 
 test {
 	useJUnitPlatform()

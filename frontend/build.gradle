@@ -1,0 +1,10 @@
+plugins {
+    id 'base'
+	id 'com.github.node-gradle.node' version '3.0.1'
+}
+
+task buildReact(type: YarnTask, dependsOn: yarn) {
+	args = ['build']
+}
+
+build.dependsOn buildReact

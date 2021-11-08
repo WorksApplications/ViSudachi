@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ develop ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ develop ]
 
 jobs:
   build:

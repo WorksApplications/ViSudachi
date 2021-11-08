@@ -1,4 +1,7 @@
 # ViSudachi
+
+[![build](https://github.com/WorksApplications/ViSudachi/actions/workflows/build.yml/badge.svg)](https://github.com/WorksApplications/ViSudachi/actions/workflows/build.yml)
+
 A tool for visualizing the internal structures of morphological analyzer [Sudachi](https://github.com/WorksApplications/Sudachi).
 
 ## Build

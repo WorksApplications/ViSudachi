@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'com.worksap.nlp:sudachi:0.5.3'
+	implementation 'com.worksap.nlp:sudachi:0.6.0'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
   	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
